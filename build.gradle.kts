@@ -10,6 +10,7 @@ plugins {
 group = "io.potpvp.minecraft"
 version = "1.0"
 paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
+val lombokVersion = "1.18.34"
 
 repositories {
     mavenCentral()
@@ -22,14 +23,14 @@ manifold {
 dependencies {
     paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
 
-    compileOnly("org.projectlombok:lombok:1.18.34")
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
 
     implementation("systems.manifold:manifold-json-rt:${manifold.manifoldVersion.get()}")
     implementation("systems.manifold:manifold-props-rt:${manifold.manifoldVersion.get()}")
 
     annotationProcessor("systems.manifold:manifold-json:${manifold.manifoldVersion.get()}")
     annotationProcessor("systems.manifold:manifold-props:${manifold.manifoldVersion.get()}")
-    annotationProcessor("org.projectlombok:lombok:1.18.34")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
 
     testImplementation("systems.manifold:manifold-json-rt:${manifold.manifoldVersion.get()}")
     testImplementation("systems.manifold:manifold-props-rt:${manifold.manifoldVersion.get()}")
