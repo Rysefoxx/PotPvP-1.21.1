@@ -10,7 +10,9 @@ plugins {
 group = "io.potpvp.minecraft"
 version = "1.0"
 paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
+
 val lombokVersion = "1.18.34"
+val hibernateVersion = "5.5.5.Final"
 
 repositories {
     mavenCentral()
@@ -24,6 +26,13 @@ dependencies {
     paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
 
     compileOnly("org.projectlombok:lombok:$lombokVersion")
+
+    library("org.springframework.boot:spring-boot-starter-data-jpa:3.2.4")
+    library("org.springframework:spring-tx:6.1.5")
+    library("org.springframework:spring-context-support:6.1.5")
+    library("org.mariadb.jdbc:mariadb-java-client:2.7.3")
+    compileOnly("org.hibernate:hibernate-core:$hibernateVersion")
+    compileOnly("org.hibernate:hibernate-envers:$hibernateVersion")
 
     implementation("systems.manifold:manifold-json-rt:${manifold.manifoldVersion.get()}")
     implementation("systems.manifold:manifold-props-rt:${manifold.manifoldVersion.get()}")
@@ -62,4 +71,7 @@ paper {
     apiVersion = "1.21"
     author = "Rysefoxx"
     version = getVersion().toString()
+
+    loader = "io.potpvp.minecraft.PluginLibrariesLoader"
+    generateLibrariesJson = true
 }
