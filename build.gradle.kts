@@ -33,7 +33,7 @@ tasks {
 paper {
     name = "PotPvP"
     main = "io.potpvp.minecraft.PotPlugin"
-    apiVersion = "1.20"
+    apiVersion = "1.21"
     author = "Rysefoxx"
     version = getVersion().toString()
 }
