@@ -31,6 +31,8 @@ dependencies {
     library("org.springframework:spring-tx:6.1.5")
     library("org.springframework:spring-context-support:6.1.5")
     library("org.mariadb.jdbc:mariadb-java-client:2.7.3")
+    library("org.javassist:javassist:3.29.0-GA")
+
     compileOnly("org.hibernate:hibernate-core:$hibernateVersion")
     compileOnly("org.hibernate:hibernate-envers:$hibernateVersion")
 
