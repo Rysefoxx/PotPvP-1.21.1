@@ -1,7 +1,10 @@
-package io.potpvp.minecraft.entity.whitelist;
+package io.potpvp.minecraft.entity.language;
 
 import io.potpvp.minecraft.annotation.AutoSave;
+import io.potpvp.minecraft.language.Language;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import java.util.Objects;
 import java.util.UUID;
@@ -9,18 +12,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * This entity represents a whitelist entry.
+ * This entity represents a language entry.
  *
  * @author Rysefoxx
- * @since 06.10.2024
+ * @since 19.10.2024
  */
 @Entity
 @Setter(onMethod_ = @AutoSave)
 @Getter
-public class WhitelistEntity {
+public class LanguageEntity {
 
   @Id
   private UUID uuid;
+  @Enumerated(EnumType.STRING)
+  private Language language;
 
   @Override
   public boolean equals(Object o) {
@@ -30,7 +35,7 @@ public class WhitelistEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WhitelistEntity that = (WhitelistEntity) o;
+    LanguageEntity that = (LanguageEntity) o;
     return Objects.equals(uuid, that.uuid);
   }
 
@@ -41,8 +46,9 @@ public class WhitelistEntity {
 
   @Override
   public String toString() {
-    return "WhitelistEntity{" +
+    return "LanguageEntity{" +
         "uuid=" + uuid +
+        ", language=" + language +
         '}';
   }
 }

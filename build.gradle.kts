@@ -16,6 +16,7 @@ val hibernateVersion = "5.5.5.Final"
 
 repositories {
     mavenCentral()
+    maven("https://s01.oss.sonatype.org/content/groups/public/")
 }
 
 manifold {
@@ -26,15 +27,15 @@ dependencies {
     paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
 
     compileOnly("org.projectlombok:lombok:$lombokVersion")
+    compileOnly("org.hibernate:hibernate-core:$hibernateVersion")
+    compileOnly("org.hibernate:hibernate-envers:$hibernateVersion")
 
     library("org.springframework.boot:spring-boot-starter-data-jpa:3.2.4")
     library("org.springframework:spring-tx:6.1.5")
     library("org.springframework:spring-context-support:6.1.5")
     library("org.mariadb.jdbc:mariadb-java-client:2.7.3")
     library("org.javassist:javassist:3.29.0-GA")
-
-    compileOnly("org.hibernate:hibernate-core:$hibernateVersion")
-    compileOnly("org.hibernate:hibernate-envers:$hibernateVersion")
+    library("io.github.rysefoxx.inventory:RyseInventory-Plugin:1.6.5.26-DEV")
 
     implementation("systems.manifold:manifold-json-rt:${manifold.manifoldVersion.get()}")
     implementation("systems.manifold:manifold-props-rt:${manifold.manifoldVersion.get()}")
@@ -65,6 +66,18 @@ tasks {
     shadowJar {
         mergeServiceFiles()
     }
+}
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs.add("--enable-preview")
+}
+
+tasks.withType<Test> {
+    jvmArgs("--enable-preview")
+}
+
+tasks.withType<JavaExec> {
+    jvmArgs("--enable-preview")
 }
 
 paper {

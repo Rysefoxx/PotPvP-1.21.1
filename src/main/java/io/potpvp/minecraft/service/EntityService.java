@@ -1,6 +1,8 @@
 package io.potpvp.minecraft.service;
 
+import io.potpvp.minecraft.database.ResultHandler;
 import io.potpvp.minecraft.event.SystemInitializedEvent;
+import java.util.function.Consumer;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.event.EventListener;
 
@@ -12,7 +14,7 @@ import org.springframework.context.event.EventListener;
  */
 public interface EntityService<T> {
 
-  void delete(@NotNull T toDelete);
+  void delete(@NotNull T toDelete, @NotNull ResultHandler<T> resultHandler);
 
   @EventListener(SystemInitializedEvent.class)
   default void load(@NotNull SystemInitializedEvent event) {

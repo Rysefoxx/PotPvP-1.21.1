@@ -1,6 +1,7 @@
 package io.potpvp.minecraft.event;
 
 import io.potpvp.minecraft.PotPlugin;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
  * @since 13.10.2024
  */
 @RequiredArgsConstructor
+@Getter
 public class SystemInitializedEvent {
 
   private final PotPlugin plugin;

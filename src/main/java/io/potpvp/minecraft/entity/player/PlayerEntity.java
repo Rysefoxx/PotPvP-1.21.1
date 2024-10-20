@@ -1,4 +1,4 @@
-package io.potpvp.minecraft.entity.whitelist;
+package io.potpvp.minecraft.entity.player;
 
 import io.potpvp.minecraft.annotation.AutoSave;
 import jakarta.persistence.Entity;
@@ -9,18 +9,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * This entity represents a whitelist entry.
+ * This entity represents a player entry.
  *
  * @author Rysefoxx
- * @since 06.10.2024
+ * @since 19.10.2024
  */
 @Entity
 @Setter(onMethod_ = @AutoSave)
 @Getter
-public class WhitelistEntity {
+public class PlayerEntity {
 
   @Id
   private UUID uuid;
+  private String playerName;
 
   @Override
   public boolean equals(Object o) {
@@ -30,7 +31,7 @@ public class WhitelistEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WhitelistEntity that = (WhitelistEntity) o;
+    PlayerEntity that = (PlayerEntity) o;
     return Objects.equals(uuid, that.uuid);
   }
 
@@ -41,8 +42,9 @@ public class WhitelistEntity {
 
   @Override
   public String toString() {
-    return "WhitelistEntity{" +
+    return "PlayerEntity{" +
         "uuid=" + uuid +
+        ", playerName='" + playerName + '\'' +
         '}';
   }
 }
