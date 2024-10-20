@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
+ * The listener class for handling connection events.
+ *
  * @author Rysefoxx
  * @since 19.10.2024
  */
