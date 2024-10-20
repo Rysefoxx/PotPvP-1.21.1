@@ -6,7 +6,6 @@ import static io.potpvp.minecraft.core.CoreConstants.General.PREFIX;
 import static io.potpvp.minecraft.core.CoreConstants.Service.WHITELIST_ADD;
 import static io.potpvp.minecraft.core.CoreConstants.Service.WHITELIST_ALREADY_ADDED;
 import static io.potpvp.minecraft.core.CoreConstants.Service.WHITELIST_NOT_ADDED;
-import static io.potpvp.minecraft.core.CoreConstants.Service.WHITELIST_REMOVE;
 import static io.potpvp.minecraft.core.CoreConstants.Service.WHITELIST_TOGGLE;
 
 import io.potpvp.minecraft.PotPlugin;
@@ -78,11 +77,11 @@ public class WhitelistService implements WhitelistServiceLogic {
 
   @Override
   public void toggle(@NotNull CorePlayer corePlayer) {
-    boolean whitelist = !this.plugin.getConfig().getBoolean("whitelist", true);
-    this.plugin.getConfig().set("whitelist", whitelist);
+    boolean enabled = !isEnabled();
+    this.plugin.getConfig().set("enabled", enabled);
     this.plugin.saveConfig();
 
-    corePlayer.translate(WHITELIST_TOGGLE, PREFIX, whitelist ? ENABLED.translate(corePlayer.getUuid()) : DISABLED.translate(corePlayer.getUuid()));
+    corePlayer.translate(WHITELIST_TOGGLE, PREFIX, enabled ? ENABLED.translate(corePlayer.getUuid()) : DISABLED.translate(corePlayer.getUuid()));
   }
 
   @Override
@@ -115,6 +114,11 @@ public class WhitelistService implements WhitelistServiceLogic {
   @Override
   public boolean isWhitelisted(@NotNull UUID uuid) {
     return getWhitelistEntity(uuid).isPresent();
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return this.plugin.getConfig().getBoolean("whitelist", true);
   }
 
   /**

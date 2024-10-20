@@ -58,5 +58,10 @@ public final class CoreConstants {
     public static final String WHITELIST_NOT_ADDED = "WHITELIST_NOT_ADDED";
   }
 
+  @NoArgsConstructor(access = AccessLevel.PRIVATE)
+  public static class Listener {
+    public static final String NOT_WHITELISTED = "NOT_WHITELISTED";
+  }
+
 
 }

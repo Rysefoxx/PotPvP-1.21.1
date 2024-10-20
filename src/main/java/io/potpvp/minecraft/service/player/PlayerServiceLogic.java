@@ -37,4 +37,11 @@ public interface PlayerServiceLogic extends EntityService<PlayerEntity> {
    */
   Optional<PlayerEntity> findByUuid(@NotNull UUID uuid);
 
+  /**
+   * Handles the player join event.
+   *
+   * @param player the player that joined
+   */
+  void playerJoin(@NotNull Player player);
+
 }

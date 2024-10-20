@@ -76,4 +76,15 @@ public class PlayerService implements PlayerServiceLogic {
         .filter(entity -> entity.getUuid().equals(uuid))
         .findFirst();
   }
+
+  @Override
+  public void playerJoin(@NotNull Player player) {
+    Optional<PlayerEntity> optional = findByUuid(player.getUniqueId());
+    if (optional.isEmpty()) {
+      create(player);
+      return;
+    }
+
+    tryUpdatePlayerName(player);
+  }
 }

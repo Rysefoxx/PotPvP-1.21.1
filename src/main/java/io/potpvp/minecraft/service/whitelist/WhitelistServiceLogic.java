@@ -81,4 +81,11 @@ public interface WhitelistServiceLogic extends EntityService<WhitelistEntity> {
    */
   boolean isWhitelisted(@NotNull UUID uuid);
 
+  /**
+   * Checks if the whitelist is enabled.
+   *
+   * @return true if the whitelist is enabled
+   */
+  boolean isEnabled();
+
 }
